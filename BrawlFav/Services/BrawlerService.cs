@@ -3,20 +3,20 @@ using BrawlFav.Models;
 
 namespace BrawlFav.Services;
 
-public static class BrawlerService
+public class BrawlerService: IBrawlerService
 {
-    static List<Brawler> Brawlers { get; }
-    static private int CountId { get; set; }
+    List<Brawler> Brawlers { get; }
+    private int CountId { get; set; }
 
-    static BrawlerService()
+   public BrawlerService()
     {
         Brawlers = new List<Brawler>();
         CountId = 1;
     }
 
-    public static List<Brawler> GetAll() => Brawlers;
+    public List<Brawler> GetAll() => Brawlers;
 
-    public static Brawler Create(CreateBrawlerDTO dto)
+    public Brawler Create(CreateBrawlerDTO dto)
     {
         Brawler brawl = new()
         {
@@ -31,9 +31,9 @@ public static class BrawlerService
         return brawl;
     }
 
-    public static Brawler? GetBrawler(int Id) => Brawlers.Find(b => b.Id == Id);
+    public Brawler? GetBrawler(int Id) => Brawlers.Find(b => b.Id == Id);
 
-    public static int Update(UpdateBrawlerDTO dto)
+    public int Update(UpdateBrawlerDTO dto)
     {
         var brawlerIndex = Brawlers.FindIndex(b => b.Id == dto.Id);
 
@@ -44,7 +44,7 @@ public static class BrawlerService
         return Brawlers[brawlerIndex].Id;
     }
 
-    public static int Delete(int Id)
+    public int Delete(int Id)
     {
         var brawlerIndex = Brawlers.FindIndex(b => b.Id == Id);
         if (brawlerIndex == -1) return -1;
