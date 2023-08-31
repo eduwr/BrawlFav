@@ -1,3 +1,4 @@
+using BrawlFav.DTOs;
 using BrawlFav.Models;
 
 namespace BrawlFav.Services;
@@ -10,9 +11,9 @@ public static class BrawlerService
 
     public static List<Brawler> GetAll() => Brawlers;
 
-    public static Brawler Create()
+    public static Brawler Create(CreateBrawlerDTO dto)
     {
-        Brawler brawl = new Brawler { Id = 1, Name = "test", StarPowers = new StarPower[0], Gadgets = new Gadget[0] };
+        Brawler brawl = new Brawler { Id = Brawlers.Count(), Name = dto.Name, StarPowers = new StarPower[0], Gadgets = new Gadget[0] };
         Brawlers.Add(brawl);
 
         return brawl;
