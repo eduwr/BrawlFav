@@ -5,14 +5,10 @@ namespace BrawlFav.Services;
 
 public class BrawlerService: IBrawlerService
 {
-    List<Brawler> Brawlers { get; }
-    private int CountId { get; set; }
+    private static List<Brawler> Brawlers { get; } = new List<Brawler>();
+    private static int CountId { get; set; } = 1;
 
-   public BrawlerService()
-    {
-        Brawlers = new List<Brawler>();
-        CountId = 1;
-    }
+ 
 
     public List<Brawler> GetAll() => Brawlers;
 
@@ -33,9 +29,9 @@ public class BrawlerService: IBrawlerService
 
     public Brawler? GetBrawler(int Id) => Brawlers.Find(b => b.Id == Id);
 
-    public int Update(UpdateBrawlerDTO dto)
+    public int Update(int id, UpdateBrawlerDTO dto)
     {
-        var brawlerIndex = Brawlers.FindIndex(b => b.Id == dto.Id);
+        var brawlerIndex = Brawlers.FindIndex(b => b.Id == id);
 
         if (brawlerIndex == -1) return -1;
 

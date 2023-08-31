@@ -10,7 +10,7 @@ namespace BrawlFav.Services
         List<Brawler> GetAll();
         Brawler Create(CreateBrawlerDTO dto);
         Brawler? GetBrawler(int Id);
-        int Update(UpdateBrawlerDTO dto);
+        int Update(int Id, UpdateBrawlerDTO dto);
         int Delete(int Id);
     }
 }
