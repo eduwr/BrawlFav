@@ -22,13 +22,29 @@ namespace BrawlFav.Services.Tests
             Assert.AreEqual(0, createdBrawler.StarPowers.Length);
             Assert.AreEqual(0, createdBrawler.Gadgets.Length);
 
-            string secondName = "SQUARK";
+            string secondName = "SQUEAK";
             createdBrawler = BrawlerService.Create(new DTOs.CreateBrawlerDTO { Name = secondName });
             brawlers = BrawlerService.GetAll();
 
             Assert.AreEqual(2, brawlers.Count);
             Assert.AreEqual(createdBrawler, brawlers[1]);
             Assert.AreEqual(brawlers[1].Name, secondName);
+        }
+        
+         
+        [TestMethod]
+        public void GetBrowler_ById()
+        {
+            string firstName = "SHELLY";
+            var firstCreatedBrawler = BrawlerService.Create(new DTOs.CreateBrawlerDTO { Name = firstName });
+            string secondName = "SQUEAK";
+            var secondCreatedBrawler = BrawlerService.Create(new DTOs.CreateBrawlerDTO { Name = secondName });
+ 
+            var first = BrawlerService.GetBrawler(firstCreatedBrawler.Id);
+            var second = BrawlerService.GetBrawler(secondCreatedBrawler.Id);
+
+            Assert.AreEqual(first.Id, firstCreatedBrawler.Id);
+            Assert.AreEqual(second.Id, secondCreatedBrawler.Id);
         }
 
     }

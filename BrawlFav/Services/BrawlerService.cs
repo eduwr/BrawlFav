@@ -18,4 +18,6 @@ public static class BrawlerService
 
         return brawl;
     }
+
+    public static Brawler GetBrawler(int Id) => Brawlers[Id];
 }
