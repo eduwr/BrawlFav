@@ -68,7 +68,7 @@ namespace BrawlFav.Services.Tests
 
 
             string newName = "16-BIT";
-            var updated = _brawlerService.Update(new DTOs.UpdateBrawlerDTO { Id = brawler.Id, Name = newName });
+            var updated = _brawlerService.Update(brawler.Id, new DTOs.UpdateBrawlerDTO { Name = newName });
 
             Assert.AreEqual(updated, brawler.Id);
 
@@ -82,7 +82,7 @@ namespace BrawlFav.Services.Tests
         public void Update_NonExistingBrawler()
         {
             string newName = "16-BIT";
-            var updated = _brawlerService.Update(new DTOs.UpdateBrawlerDTO { Id = 2, Name = newName });
+            var updated = _brawlerService.Update(2, new DTOs.UpdateBrawlerDTO { Name = newName });
 
             Assert.AreEqual(updated, -1);
         }

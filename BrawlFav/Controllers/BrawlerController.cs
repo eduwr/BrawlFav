@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BrawlFav.Controllers
 {
     [ApiController]
-    [Route("/brawler")]
+    [Route("[controller]")]
     public class BrawlerController : ControllerBase
     {
 
@@ -20,14 +20,14 @@ namespace BrawlFav.Controllers
         }
 
         // GET: BrawlerController
-        [HttpGet("/", Name = "GetBrawlers")]
+        [HttpGet(Name = "GetBrawlers")]
         public ActionResult<List<Brawler>> Index()
         {
             return Ok(_brawlerService.GetAll());
         }
 
         // GET: BrawlerController/5
-        [HttpGet("/{id}", Name = "GetBrawler")]
+        [HttpGet(Name = "GetBrawler")]
         public ActionResult<Brawler> Details([FromRoute] int id)
         {
             if (id <= 0)
@@ -46,7 +46,7 @@ namespace BrawlFav.Controllers
 
 
         // POST: BrawlerController
-        [HttpPost("/", Name = "Create Brawler")]
+        [HttpPost(Name = "Create Brawler")]
         public ActionResult<Brawler> Create([FromBody] CreateBrawlerDTO createBrawlerDTO)
         {
             if (ModelState.IsValid)
@@ -62,7 +62,7 @@ namespace BrawlFav.Controllers
   
 
         // PATCH: BrawlerController/5
-        [HttpPatch("/{id}", Name = "Update Brawler")]
+        [HttpPatch(Name = "Update Brawler")]
         public ActionResult<int> Edit([FromRoute] int id, [FromBody] UpdateBrawlerDTO updateBrawlerDTO)
         {
 
@@ -83,7 +83,7 @@ namespace BrawlFav.Controllers
 
  
         // DELETE: BrawlerController/5
-        [HttpDelete("/{id}", Name = "Delete Brawler")]
+        [HttpDelete(Name = "Delete Brawler")]
         public ActionResult<int> Delete([FromRoute] int id)
         {
             if (id <= 0)
