@@ -3,9 +3,9 @@
 
     public enum TodoStatus
     {
-        DONE,
+        IN_QUEUE,
         IN_PROGRESS,
-        IN_QUEUE
+        DONE,
     }
 
     public class Todo
